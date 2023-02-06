@@ -4,6 +4,7 @@ import { FormContact } from './FormContact/FormContact';
 import { ListContacts } from './ListContacts/ListContacts';
 import { Firter } from './Filter/Filter';
 import { nanoid } from 'nanoid';
+import css from './App.module.css';
 
 export class App extends Component {
   state = {
@@ -47,7 +48,7 @@ export class App extends Component {
       item.name.toLowerCase().includes(formatedtext)
     );
     return (
-      <div>
+      <div className={css.wrap}>
         <Section
           title={'Phoneboock'}
           children={
