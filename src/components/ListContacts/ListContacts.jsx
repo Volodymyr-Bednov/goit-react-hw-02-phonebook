@@ -1,8 +1,12 @@
 import { ItemContact } from './ItemContact';
-export const ListContacts = () => {
+export const ListContacts = ({ dataList }) => {
+  console.log(dataList);
   return (
     <ul>
-      <ItemContact />
+      {dataList.map(item => (
+        <ItemContact key={item.id} dataItem={item} />
+      ))}
+      {/* <ItemContact /> */}
     </ul>
   );
 };

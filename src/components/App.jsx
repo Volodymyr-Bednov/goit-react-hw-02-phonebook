@@ -2,22 +2,24 @@ import { Component } from 'react';
 import { Section } from './Section/Section';
 import { FormContact } from './FormContact/FormContact';
 import { ListContacts } from './ListContacts/ListContacts';
+import { Firter } from './Filter/Filter';
 import { nanoid } from 'nanoid';
 
 export class App extends Component {
   state = {
     contacts: [],
     name: '',
+    number: '',
   };
   addContactHandler = evt => {
     evt.preventDefault();
-    console.dir(evt.target.elements);
-    const { name, tel } = evt.target.elements;
-    console.log(name.value);
+    const { name, number } = evt.target.elements;
     this.setState(list => {
-      console.log(list.contacts);
       return {
-        contacts: [...list.contacts, { name: name.value }],
+        contacts: [
+          ...list.contacts,
+          { id: nanoid(), name: name.value, number: number.value },
+        ],
       };
     });
   };
@@ -30,11 +32,14 @@ export class App extends Component {
             <FormContact
               onAddContactHandler={this.addContactHandler}
               name={this.state.name}
+              number={this.state.number}
             />
           }
         />
-        <Section title={'Contacts'} children={<ListContacts />} />
-        <ListContacts />
+        <Section title={'Contacts'}>
+          <Firter />
+          <ListContacts dataList={this.state.contacts} />
+        </Section>
       </div>
     );
   }
