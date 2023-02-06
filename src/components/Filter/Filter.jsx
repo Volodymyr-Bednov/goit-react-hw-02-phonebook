@@ -1,8 +1,12 @@
+import css from './Filter.module.css';
 export const Firter = ({ valueFilter, onFilterChahge }) => {
   return (
-    <div>
-      <label htmlFor="fipter">Find contacts by name</label>
+    <div className={css.filterWrap}>
+      <label className={css.labelInput} htmlFor="fipter">
+        Find contacts by name
+      </label>
       <input
+        className={css.inputForm}
         type="text"
         name="fipter"
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"

@@ -1,12 +1,13 @@
+import css from './ListContacts.module.css';
 export const ItemContact = ({
   dataItem: { id, name, number },
   onDeleteItemHandler,
 }) => {
   //console.log(name);
   return (
-    <li>
-      {name}: {number}: {id}
-      <button data-id={id} type="button" onClick={onDeleteItemHandler}>
+    <li className={css.item}>
+      {name}: {number}
+      <button className={css.btnDel} data-id={id} type="button" onClick={onDeleteItemHandler}>
         Delete
       </button>
     </li>
