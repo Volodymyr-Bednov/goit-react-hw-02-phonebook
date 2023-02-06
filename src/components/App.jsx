@@ -9,12 +9,14 @@ export class App extends Component {
   state = {
     contacts: [],
     filter: '',
-    name: '',
-    number: '',
   };
   addContactHandler = evt => {
     evt.preventDefault();
     const { name, number } = evt.target.elements;
+    const nameMatch = this.state.contacts.filter(item =>
+      item.name.toLowerCase().includes(name.value.toLowerCase())
+    );
+    if (nameMatch.length) return alert(`${name.value} is already in contacts`);
     this.setState(list => {
       return {
         contacts: [
@@ -25,9 +27,17 @@ export class App extends Component {
     });
   };
 
-  filterChahge = evta => {
-    //console.log(evta.target.value);
-    this.setState({ filter: evta.target.value });
+  deleteContactHandler = evt => {
+    console.dir(evt.target.dataset.id);
+    this.setState(({ contacts }) => {
+      return {
+        contacts: contacts.filter(item => item.id !== evt.target.dataset.id),
+      };
+    });
+  };
+
+  filterChahge = evt => {
+    this.setState({ filter: evt.target.value });
   };
 
   render() {
@@ -43,14 +53,17 @@ export class App extends Component {
           children={
             <FormContact
               onAddContactHandler={this.addContactHandler}
-              name={this.state.name}
-              number={this.state.number}
+              // name={this.state.name}
+              // number={this.state.number}
             />
           }
         />
         <Section title={'Contacts'}>
           <Firter onFilterChahge={this.filterChahge} valueFilter={filter} />
-          <ListContacts dataList={filteredData} />
+          <ListContacts
+            dataList={filteredData}
+            onDeleteContactHandler={this.deleteContactHandler}
+          />
         </Section>
       </div>
     );
