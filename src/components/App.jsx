@@ -8,6 +8,7 @@ import { nanoid } from 'nanoid';
 export class App extends Component {
   state = {
     contacts: [],
+    filter: '',
     name: '',
     number: '',
   };
@@ -23,7 +24,18 @@ export class App extends Component {
       };
     });
   };
+
+  filterChahge = evta => {
+    //console.log(evta.target.value);
+    this.setState({ filter: evta.target.value });
+  };
+
   render() {
+    const { filter, contacts } = this.state;
+    const formatedtext = filter.toLowerCase();
+    const filteredData = contacts.filter(item =>
+      item.name.toLowerCase().includes(formatedtext)
+    );
     return (
       <div>
         <Section
@@ -37,8 +49,8 @@ export class App extends Component {
           }
         />
         <Section title={'Contacts'}>
-          <Firter />
-          <ListContacts dataList={this.state.contacts} />
+          <Firter onFilterChahge={this.filterChahge} valueFilter={filter} />
+          <ListContacts dataList={filteredData} />
         </Section>
       </div>
     );

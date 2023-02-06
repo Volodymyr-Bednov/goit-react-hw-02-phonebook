@@ -1,5 +1,5 @@
 export const ItemContact = ({ dataItem: { name, number } }) => {
-  console.log(name);
+  //console.log(name);
   return (
     <li>
       {name}: {number}

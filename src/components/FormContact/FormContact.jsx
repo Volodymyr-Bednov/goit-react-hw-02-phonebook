@@ -1,5 +1,5 @@
 export const FormContact = ({ name, onAddContactHandler }) => {
-  console.log(onAddContactHandler);
+  //console.log(onAddContactHandler);
   return (
     <form onSubmit={onAddContactHandler}>
       <label htmlFor="name">Name</label>
