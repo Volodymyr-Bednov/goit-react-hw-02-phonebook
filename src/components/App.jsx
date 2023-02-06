@@ -52,11 +52,7 @@ export class App extends Component {
         <Section
           title={'Phoneboock'}
           children={
-            <FormContact
-              onAddContactHandler={this.addContactHandler}
-              // name={this.state.name}
-              // number={this.state.number}
-            />
+            <FormContact onAddContactHandler={this.addContactHandler} />
           }
         />
         <Section title={'Contacts'}>

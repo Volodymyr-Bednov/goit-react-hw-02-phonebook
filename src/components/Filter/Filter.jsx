@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import css from './Filter.module.css';
 export const Firter = ({ valueFilter, onFilterChahge }) => {
   return (
@@ -15,4 +16,9 @@ export const Firter = ({ valueFilter, onFilterChahge }) => {
       ></input>
     </div>
   );
+};
+
+Firter.propTypes = {
+  valueFilter: PropTypes.string,
+  onFilterChahge: PropTypes.func,
 };

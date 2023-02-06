@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { ItemContact } from './ItemContact';
 export const ListContacts = ({ dataList, onDeleteContactHandler }) => {
   //console.log(dataList);
@@ -12,4 +13,10 @@ export const ListContacts = ({ dataList, onDeleteContactHandler }) => {
       ))}
     </ul>
   );
+};
+
+ListContacts.propTypes = {
+  dataList: PropTypes.array,
+
+  onDeleteContactHandler: PropTypes.func,
 };

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import css from './FormContact.module.css';
 export const FormContact = ({ name, onAddContactHandler }) => {
   //console.log(onAddContactHandler);
@@ -30,4 +31,8 @@ export const FormContact = ({ name, onAddContactHandler }) => {
       </button>
     </form>
   );
+};
+
+FormContact.propTypes = {
+  onAddContactHandler: PropTypes.func,
 };
