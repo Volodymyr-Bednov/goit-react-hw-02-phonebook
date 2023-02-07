@@ -11,23 +11,31 @@ export class App extends Component {
     contacts: [],
     filter: '',
   };
+
   addContactHandler = evt => {
     evt.preventDefault();
     const { name, number } = evt.target.elements;
+    const nameValue = name.value;
+    const numbervalue = number.value;
     const nameMatch = this.state.contacts.filter(item =>
-      item.name.toLowerCase().includes(name.value.toLowerCase())
+      item.name.toLowerCase().includes(nameValue.toLowerCase())
     );
-    if (nameMatch.length) return alert(`${name.value} is already in contacts`);
+    if (nameMatch.length) return alert(`${nameValue} is already in contacts`);
     this.setState(list => {
       return {
         contacts: [
           ...list.contacts,
-          { id: nanoid(), name: name.value, number: number.value },
+          { id: nanoid(), name: nameValue, number: numbervalue },
         ],
       };
     });
+    this.clearField(evt.target.elements);
   };
 
+  clearField = evt => {
+    evt.name.value = '';
+    evt.number.value = '';
+  };
   deleteContactHandler = evt => {
     console.dir(evt.target.dataset.id);
     this.setState(({ contacts }) => {
