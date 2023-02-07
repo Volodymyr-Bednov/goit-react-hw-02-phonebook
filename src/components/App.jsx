@@ -29,10 +29,10 @@ export class App extends Component {
         ],
       };
     });
-    this.clearField(evt.target.elements);
+    this.clearFields(evt.target.elements);
   };
 
-  clearField = evt => {
+  clearFields = evt => {
     evt.name.value = '';
     evt.number.value = '';
   };
